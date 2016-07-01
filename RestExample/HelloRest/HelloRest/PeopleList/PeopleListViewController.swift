@@ -32,9 +32,10 @@ extension PeopleListViewController : UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let personForIndex = viewModel.getPersonAtIndex(indexPath.row)
         let cellIdentifier = "\(personForIndex.id)"
-        let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) ?? UITableViewCell(style: .Default, reuseIdentifier: cellIdentifier)
+        let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) ?? UITableViewCell(style: .Subtitle, reuseIdentifier: cellIdentifier)
 
         cell.textLabel?.text = personForIndex.name
+        cell.detailTextLabel?.text = personForIndex.phone
         return cell
     }
 

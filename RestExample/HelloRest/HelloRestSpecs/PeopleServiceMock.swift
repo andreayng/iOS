@@ -4,10 +4,10 @@ import Foundation
 
 class PeopleServiceMock: PeopleServiceType {
     var getAllPeopleCalled = false
-    var stubbedPeopleWithoutDetail = [Person(id: 1, name: "someName")]
+    var stubbedPeopleWithPhone = [Person(id: 1, name: "someName", phone: "somePhoneNumber")]
 
     func getAllPeople(onCompletion: ([Person]) -> Void){
         getAllPeopleCalled = true
-        onCompletion(stubbedPeopleWithoutDetail)
+        onCompletion(stubbedPeopleWithPhone)
     }
 }

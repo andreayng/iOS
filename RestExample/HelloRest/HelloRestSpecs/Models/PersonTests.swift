@@ -31,5 +31,14 @@ class PersonTests: QuickSpec {
                 expect(person) != differentPerson
             }
         }
+        describe("initWithPhoneNumber"){
+            it("should return a person with only name and id and phone"){
+                let person = Person(id: 1, name: "someName", phone: "somePhoneNumber")
+                expect(person.name).to(equal("someName"))
+                expect(person.id).to(equal(1))
+                expect(person.age).to(beNil())
+                expect(person.phone).to(equal("somePhoneNumber"))
+            }
+        }
     }
 }

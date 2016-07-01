@@ -10,7 +10,7 @@ class PeopleService : PeopleServiceType {
 
     func getAllPeople(onCompletion: ([Person]) -> Void) {
         Alamofire
-            .request(.GET, "http://localhost:8000/list")
+            .request(.GET, "http://localhost:8000/listAll")
             .validate(statusCode: 200..<400)
             .responseJSON { response in
                 if let value = response.result.value {

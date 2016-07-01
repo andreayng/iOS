@@ -20,8 +20,8 @@ class PeopleListViewModelTests : QuickSpec {
             }
 
             it("should return the person at an index") {
-                let expectedPersonWithoutDetail = Person(id: 1, name: "someName")
-                expect(viewModel.getPersonAtIndex(0)).to(equal(expectedPersonWithoutDetail))
+                let expectedPersonWithPhone = Person(id: 1, name: "someName", phone: "somePhoneNumber")
+                expect(viewModel.getPersonAtIndex(0)).to(equal(expectedPersonWithPhone))
             }
         }
     }
