@@ -21,5 +21,21 @@ class PeopleListViewControllerTests : QuickSpec {
                 expect(vc.title).to(equal("Contacts"))
             }
         }
+        
+        describe("transition to details view") {
+            it("should push the person Details view controller") {
+                let viewController = TestablePeopleListViewController()
+                viewController.goToPersonDetails()
+                expect(viewController.didPresentViewController).to(beAKindOf(PersonDetailsViewController.self))
+            }
+        }
+    }
+}
+
+class TestablePeopleListViewController : PeopleListViewController {
+    var didPresentViewController: UIViewController?
+    
+    override func pushViewControllerOnNavigationController(withViewController viewController: UIViewController) {
+        didPresentViewController = viewController
     }
 }

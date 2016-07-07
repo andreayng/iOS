@@ -21,9 +21,20 @@ class PeopleListViewController: UIViewController{
             self.tableView.reloadData()
         }
     }
+    
+    func goToPersonDetails(withID id: Int) {
+        let targetStoryboard = UIStoryboard(name: "PersonDetails", bundle: nil)
+        let viewController = targetStoryboard.instantiateInitialViewController() as! PersonDetailsViewController
+        viewController.personID = id
+        pushViewControllerOnNavigationController(withViewController: viewController)
+    }
+    
+    func pushViewControllerOnNavigationController(withViewController viewController: UIViewController) {
+        navigationController?.pushViewController(viewController, animated: true)
+    }
 }
 
-extension PeopleListViewController : UITableViewDataSource {
+extension PeopleListViewController : UITableViewDataSource, UITableViewDelegate {
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.numberOfPeople
@@ -41,6 +52,12 @@ extension PeopleListViewController : UITableViewDataSource {
 
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let indexInArray = indexPath.row
+        let personID = viewModel.getPersonAtIndex(indexInArray).id
+        goToPersonDetails(withID: personID)
     }
 }
 
